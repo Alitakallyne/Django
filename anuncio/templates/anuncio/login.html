@@ -1,0 +1,51 @@
+{% extends 'anuncio/base.html' %}
+{% load widget_tweaks %}
+{% block conteudo %}
+<div class="jumbotron">
+      <div class="container">
+        <h1 class="display-3">Não sabe onde comprar seus móveis?! Ficou perdido?</h1>
+        <p>A federal móveis te ajuda a encotrar os melhores moveis usados da região de Picos. Temos ótimas opções
+        para você escolher!</p>
+        <p>Caso não seja cadastrado, faça seu registro <a href="{% url 'anuncio:register' %}">aqui</a>.</p>
+        <p><!--<a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a>--></p>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row justify-content-md-center">
+        <div class="col-md-6">
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+            <h1 class="display-4">Fazer Login</h1>
+            <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+            <form action="." method="POST">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="fieldWrapper">
+                        {{ field.errors }}
+                        {{ field.label_tag }} {{ field|add_class:"form-control input-md" }}
+                    </div>
+                {% endfor %}
+                <p><input type="submit" value="Enviar" /></p>
+            </form>
+          </div>
+        </div>
+        {% if form.errors %}
+         <div class="alert alert-danger">
+             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+             {{form.non_field_errors}}
+         </div>
+         {% endif %}
+        </div>
+
+      
+
+         
+         <!-- fim if novo -->
+
+      
+
+    </div>
+</div>
+{% endblock %}

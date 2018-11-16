@@ -1,0 +1,21 @@
+{% extends 'anuncio/base.html' %}
+{% load widget_tweaks %}
+<!-- Bloco que define o <title></title> da nossa página -->
+{% block title %}Página Inicial{% endblock %}
+
+{% block titulo_jumbtron %}Adicionar Categoria{% endblock %}
+
+<!-- Bloco de conteúdo da nossa página -->    
+{% block conteudo %}
+<form action="." method="POST">
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="fieldWrapper">
+            {{ field.errors }}
+            {{ field.label_tag }} {{ field|add_class:"form-control input-md" }}
+        </div>
+    {% endfor %}
+    <p><input type="submit" value="Enviar" /></p>
+</form>
+
+{% endblock %}
